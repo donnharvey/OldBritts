@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//WC3//DTD XHTML 1.0 Transistional//EN" "http://www.w3.org/TR/xhtml/DTD/xhtml1-transitional.dtd">
+<HTML>
+<HEAD>
+<TITLE>Old Britts, Calculate Miles Per Hour for a Commando gearbox</TITLE>
+<!-- start comments
+        Description:    Old Britts, Calculate Miles Per Hour for a Commando gearbox
+        Author:         F. H. Eaton & Associates
+        Date:           04/29/10
+// end comments -->
+
+	<script src="js/yui-min.js"></script>
+	<script src="js/json2.js"></script>
+	
+	<link rel="stylesheet" type="text/css" href="js/cssgrids-min.css">
+	<link rel="stylesheet" type="text/css" href="js/menu.css">
+	<SCRIPT language="JavaScript">
+		if (typeof CartPart == "undefined") 
+		{
+			PassedVal = new Array();
+			/*CartPart = new Array();
+			CartDesc = new Array();
+			CartPrice = new Array();
+			CartQty = new Array();  
+			CartTot = new Array ();
+			BillInfo = new Array ();
+			BillInfo[0] = true;
+			BillInfo[1] = false;
+			for (var i = 2; i <= 19; i++) 
+			{
+				BillInfo[i] = ""
+			}
+			CommInfo = "";
+			CartPart[0] = 'empty'*/
+		}
+	</SCRIPT></HEAD>
+<BODY BGCOLOR="#ffffff" TEXT="#000080" LINK="#ff0000" VLINK="#008000">
+	
+	<div class="yui3-g">
+		<div class="yui3-u-1-8" >
+			<div id="menu" style="text-align:center; margin:0 auto; position:fixed; width:10%;letter-spacing:normal;word-spacing:normal;">
+	<br/><br/>
+	<div id="menu_image">
+		<a HREF="ob_main.html" style="text-decoration:none;" ><IMG SRC="image/home.gif" ALT="Old Britts Home"></a>
+		<br>
+		<a HREF="ob_cart.html" ><IMG SRC="image/e_cart.gif" ALT=" Shopping Cart"></a>		<br>
+		<a HREF="ob_nor.html" ><IMG SRC="image/norts.gif" ALT="Norton Parts Menu"></a> 
+		<FONT SIZE=2><b>
+	</div>	
+	<p>
+	or by<br>year
+	</p>
+	<A HREF="nor_mk3_75.html" >1975</A><br>
+	<A HREF="nor_comm_73.html" >1973-74</A><br>
+	<A HREF="nor_comm_72.html" >1972</A><br>
+	<A HREF="nor_comm_71.html" >1971</A><br>
+	<A HREF="nor_comm_69.html" >1969-70</A><br>
+	<A HREF="nor_atlas_66.html">1966-68</A><br>
+	<A HREF="ob_group.html" >General</A>
+	</p>
+	<A HREF="ob_p_o.html" >Our products</A>
+	</b></font>
+	
+</div>		</div>
+		<div class="yui3-u-7-8">
+			<div id="content" style="border-left:2px solid blue; padding-left:8px;overflow:auto;letter-spacing:normal;word-spacing:normal; ">
+<P>
+<CENTER><IMG SRC="image/oldbs.gif" ALT="Old Britts"></CENTER>
+<P>
+<CENTER><B><FONT SIZE=5>Calculate Miles Per Hour for a Commando gearbox<BR>
+</FONT></B></CENTER>
+<P>
+
+This article will assist you in determining your speed (MPH) for a given RPM or the RPM for a given speed and a selected gear (1 through 4) for the
+Commando (AMC) gearbox.
+<p>
+
+<b>The Commando gearbox ratios are :</b>
+<ul>
+<li>1st gear is 2.56 to 1
+<li>2nd gear is 1.70 to 1
+<li>3rd gear is 1.21 to 1
+<li>4th gear is 1 to 1
+</ul>
+<p>
+
+It is easiest to start the calculations for fourth gear since it is a 1 to 1 ratio.
+At the end of this article we will show how to calculate the speed for the other gears.
+If you are using this article to calculate the speed for a gearbox that does not have a gear ratio of 1 to 1, assume the 1 to 1 ratio
+and convert to your actual ratios as we do for the other Commando gears. 
+<p>
+
+<b>Nomenclature :</b>
+<p>
+<ul>
+<li>ES -- The engine sprocket, in teeth (normally part # 06-4681, 26T).
+<li>CS -- The clutch sprocket in teeth (normally part # 06-2482, 57T).
+<li>GS -- The gearbox sprocket in teeth (countershaft sprocket).
+<li>RS -- The rear wheel sprocket in teeth (normally 42T for a stock Commando).
+<li>WD -- The rear wheel diameter in inches (not the rim size, but with tire mounted).
+<li>P -- The value for Pie (3.1416).
+<li>RPM -- Engine Revolutions per Minute.
+<li>MPH -- Miles Per Hour.
+<li>Constants in the first formula -- 12 (to convert inches to feet), 60 (to convert minutes to hours), 5280 (to convert feet to miles).
+</ul>
+<p>
+
+<b>The formula :</b>
+<p>
+<b>MPH = ES/CS x GS/RS x (P x WD)/12 x (RPM x 60)/5280</b><br>
+Or simplified some :<br>
+<b>MPH = ES/CS x GS/RS x (P x WD x 60)/63360 x RPM</b>
+<p>
+
+<b>Examples :</b>
+<p>
+ES = 26 and CS = 57 or 26/57 = .4561<br>
+GS = 19 and RS = 42 or 19/42 = .4524<br>
+WD = 25.5” so (3.1416 x 25.5 x 60)/ 63360 =.0759<br>
+.Therefore at 7000 rpm .4561 x .4524 x .0759 x 7000 = 109.63mph 
+<p>
+
+If you just chance the GS from 19T to 20T, at 7000rpm your speed would be :<br>
+.4561 x 20/42 x .0759 x 7000 = 115.40mph
+<p>
+
+Setting the RPM at constant 6500 and WD at 25.5” you can calculate a constant for [(P x WD x 60)/63360 x RPM] of 493.35:
+<bp>
+Leaving the ES at 26 and the CS at 57 we further simplify the formula to :<br>
+<b>MPH = .4561 x GS/RS x 225.02 or MPH = GS/RS x 225.02</b><br>
+By changing your gearbox or rear sprocket, you can calculate what your speed will be at 6500rpm.
+<p>
+
+On the other hand, if you want find the RPM at 65mph for a particular gearbox sprocket the formula would be:<br>
+<b>RPM = MPH / (ES/CS x GS/RS x (P x WD x 60)/63360)</b><br>
+Leaving everything the same as in the first example and we want to cruse at 65mph our formula is :<br>
+RPM = 65 / (.4561 x .4524 x .0759) = 4,140rpm<br>
+a 20T gearbox sprocket drops our RPM to 3,939rpm.
+<p>
+
+You can calculate the speeds at each gear by dividing the 4th speed by the gear ratio.
+<p>
+Taking the first answer of 109.63 at 7000rpm, that gearing would produce a top speed in 1st gear at 7000 (109.63 / 2.56) of 42.82mph.
+<p>
+The gearing in the second example or 115.40mph at 7000rpm will give at 7000rpm the following:<br>
+1st -- 2.56 to 1 = 45.08mph<br>
+2nd -- 1.70 to 1 = 67.88mph<br>
+3rd -- 1.21 to 1 = 95.37mph<br>
+4th -- 1.00 to 1 = 115.40mph<br>
+
+<p>
+<HR>
+
+<P>
+<CENTER><A HREF="ob_main.html"><B><FONT SIZE=4>Return to Old Britts home page</FONT></B></A>
+&#133;&#133; <A HREF="ob_tech.html"><B><FONT SIZE=4>Return to Technical Articles</FONT></B></A>
+</CENTER>
+
+<HR>
+<P>
+<FONT SIZE=1>This page was written and designed by F. H. Eaton
+&amp; Associates if you have any questions or comments please
+contact us at <A HREF="mailto:info@fheaton.com">info@fheaton.com</A></FONT><FONT SIZE=2>
+</FONT>
+</P>
+
+	<!-- start comments
+		Description:    Old Britts body footer include
+		Author:         CC Enterprises
+		Date:           04/24/2012
+		Changes:		
+	// end comments -->
+			
+			</div>
+		</div>
+	</div></BODY>
+</HTML>

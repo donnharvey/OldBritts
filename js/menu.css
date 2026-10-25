@@ -1,0 +1,11 @@
+#menu a:link {
+	color:blue;
+}
+#menu a:visited {
+	color:#000033;
+}
+#menu_image a:link {
+	text-decoration:blue;
+}
+#menu_image a:visited {
+	text-decoration:#000033;

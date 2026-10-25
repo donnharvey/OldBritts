@@ -1,0 +1,526 @@
+<!DOCTYPE html PUBLIC "-//WC3//DTD XHTML 1.0 Transistional//EN" "http://www.w3.org/TR/xhtml/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//WC3//DTD XHTML 1.0 Transistional//EN" "http://www.w3.org/TR/xhtml/DTD/xhtml1-transitional.dtd">
+<HTML>
+<HEAD>
+        Date:           02/12/21
+<!-- start comments
+        Description:    Group 1351 price listing
+        Author:         F. H. Eaton & Associates
+        Date:           09/24/12
+
+        Programming Note:  For automatic updateing of the dates and product table you
+                           must maintain three comment lines.  One before the last update date,
+                           one befor the actual product table and one after the product table.
+                           The above date will be updated is you do not change any of the above
+                           lines.
+// end comments -->
+
+	<script src="js/yui-min.js"></script>
+	<script src="js/json2.js"></script>
+	
+	<link rel="stylesheet" type="text/css" href="js/cssgrids-min.css">
+	<link rel="stylesheet" type="text/css" href="js/menu.css">
+	<SCRIPT language="JavaScript">
+		if (typeof CartPart == "undefined") 
+		{
+			PassedVal = new Array();
+			/*CartPart = new Array();
+			CartDesc = new Array();
+			CartPrice = new Array();
+			CartQty = new Array();  
+			CartTot = new Array ();
+			BillInfo = new Array ();
+			BillInfo[0] = true;
+			BillInfo[1] = false;
+			for (var i = 2; i <= 19; i++) 
+			{
+				BillInfo[i] = ""
+			}
+			CommInfo = "";
+			CartPart[0] = 'empty'*/
+		}
+	</SCRIPT><SCRIPT language="JavaScript">
+function AddToCart (PartNo, PDesc, UPrice) {
+  parent.PassedVal[0] = PartNo;
+  parent.PassedVal[1] = PDesc;
+  parent.PassedVal[2] = UPrice;
+  parent.PassedVal[3] = 1;
+ window.location='https://www.oldbritts.com/ob_cart.html?PassedPart='+PartNo+'&PassedDesc='+PDesc+'&PassedPrice='+UPrice+'&PassedQty='+parent.PassedVal[3];}
+</SCRIPT></HEAD>
+<BODY BGCOLOR="#ffffff" TEXT="#000080" LINK="#ff0000" VLINK="#008000">
+	
+	<div class="yui3-g">
+		<div class="yui3-u-1-8" >
+			<div id="menu" style="text-align:center; margin:0 auto; position:fixed; width:10%;letter-spacing:normal;word-spacing:normal;">
+	<br/><br/>
+	<div id="menu_image">
+		<a HREF="ob_main.html" style="text-decoration:none;" ><IMG SRC="image/home.gif" ALT="Old Britts Home"></a>
+		<br>
+		<a HREF="ob_cart.html" ><IMG SRC="image/e_cart.gif" ALT=" Shopping Cart"></a>		<br>
+		<a HREF="ob_nor.html" ><IMG SRC="image/norts.gif" ALT="Norton Parts Menu"></a> 
+		<FONT SIZE=2><b>
+	</div>	
+	<p>
+	or by<br>year
+	</p>
+	<A HREF="nor_mk3_75.html" >1975</A><br>
+	<A HREF="nor_comm_73.html" >1973-74</A><br>
+	<A HREF="nor_comm_72.html" >1972</A><br>
+	<A HREF="nor_comm_71.html" >1971</A><br>
+	<A HREF="nor_comm_69.html" >1969-70</A><br>
+	<A HREF="nor_atlas_66.html">1966-68</A><br>
+	<A HREF="ob_group.html" >General</A>
+	</p>
+	<A HREF="ob_p_o.html" >Our products</A>
+	</b></font>
+	
+</div>		</div>
+		<div class="yui3-u-7-8">
+			<div id="content" style="border-left:2px solid blue; padding-left:8px;overflow:auto;letter-spacing:normal;word-spacing:normal; "><P>
+<CENTER><IMG SRC="image/oldbs.gif" ALT="Old Britts">
+<BR>
+<B><FONT SIZE=6>Seats and Seat Covers<BR>for Nortons</FONT></B>
+</center>
+<p>
+
+The seats and seat covers that are manufactured in England for Old Britts are exact replicas
+of the original seats.  The manufacturer of our seats bought up all patterns and equipment from
+the company that originally provided seats to the Norton factory.  All seats have metal seat
+pans, except the Norvil and Fastback seats.
+<p>
+
+We have the ability to have custom seats manufactured (i.e., Different logo color, shorter
+seat pan, etc.).  Contact us about the details for ordering a custom seat.
+<p>
+
+<b>To order electronically:</b>
+<font color=black>
+click on the <b>Order</b> button for the part you want to place in your shopping cart.
+In order for this to work, your browser must use frames, and you must start at the 
+<A HREF="ob_main.html">Old Britts Home Page</A>.</font><p>
+<P>
+We try to keep all information current, but regret that prices
+and availability are subject to change. Last updated
+<!-- INSERT DATE HERE -->
+02/12/21
+<P>
+
+<!-- INSERT TABLE HERE -->
+<TABLE BORDER=1>
+<TR><TD WIDTH=140><CENTER><B>Part Number</B></CENTER></TD>
+<TD WIDTH=340><CENTER><B>Description</B></CENTER></TD>
+<TD WIDTH=30><CENTER><B>Qty. on Hand</B></CENTER></TD>
+<TD WIDTH=30><CENTER><B>Status</B></CENTER></TD>
+<TD WIDTH=50><CENTER><B>Price</B></CENTER></TD></TR>
+<TR><TD WIDTH=140 align=right>
+<form border="2">13-060501<font size=1>
+</FONT></TD>
+<TD WIDTH=340 align=left>Seat, Fastback</TD>
+<TD WIDTH=30>0</TD>
+<TD WIDTH=30>NA</TD>
+<TD WIDTH=50 align=right><CENTER>0.00</CENTER></TD></TR>
+<TR><TD WIDTH=140 align=right>
+<form border="2">13-061766<font size=1>
+<input type="button" value = "Order" onclick="AddToCart (
+'13-061766','Seat, Pre 1973 Roadster Ribbed Top Gold Logo,Strap','280.00')">
+</FONT></TD>
+<TD WIDTH=340 align=left><A HREF="81_seats.html">Seat, Pre 1973 Roadster Ribbed Top Gold Logo,Strap</A></TD>
+<TD WIDTH=30>9</TD>
+<TD WIDTH=30>-</TD>
+<TD WIDTH=50 align=right><CENTER>280.00</CENTER></TD></TR>
+<TR><TD WIDTH=140 align=right>
+<form border="2">13-061766/C<font size=1>
+<input type="button" value = "Order" onclick="AddToCart (
+'13-061766/C','Seat Cover, Pre 73 Roadster, Ribbed Top Gold Logo','96.10')">
+</FONT></TD>
+<TD WIDTH=340 align=left><A HREF="81_seats.html">Seat Cover, Pre 73 Roadster, Ribbed Top Gold Logo</A></TD>
+<TD WIDTH=30>2</TD>
+<TD WIDTH=30>-</TD>
+<TD WIDTH=50 align=right><CENTER>96.10</CENTER></TD></TR>
+<TR><TD WIDTH=140 align=right>
+<form border="2">13-061770<font size=1>
+</FONT></TD>
+<TD WIDTH=340 align=left>Seat, Interpol</TD>
+<TD WIDTH=30>0</TD>
+<TD WIDTH=30>NA</TD>
+<TD WIDTH=50 align=right><CENTER>0.00</CENTER></TD></TR>
+<TR><TD WIDTH=140 align=right>
+<form border="2">13-062390<font size=1>
+</FONT></TD>
+<TD WIDTH=340 align=left>Seat, Hi-Rider</TD>
+<TD WIDTH=30>0</TD>
+<TD WIDTH=30>NA</TD>
+<TD WIDTH=50 align=right><CENTER>0.00</CENTER></TD></TR>
+<TR><TD WIDTH=140 align=right>
+<form border="2">13-063183<font size=1>
+<input type="button" value = "Order" onclick="AddToCart (
+'13-063183','Seat Pre-73, Interstate Ribbed Top Gold Logo,Strap','261.64')">
+</FONT></TD>
+<TD WIDTH=340 align=left><A HREF="81_seats.html">Seat Pre-73, Interstate Ribbed Top Gold Logo,Strap</A></TD>
+<TD WIDTH=30>2</TD>
+<TD WIDTH=30>-</TD>
+<TD WIDTH=50 align=right><CENTER>261.64</CENTER></TD></TR>
+<TR><TD WIDTH=140 align=right>
+<form border="2">13-063183/C<font size=1>
+<input type="button" value = "Order" onclick="AddToCart (
+'13-063183/C','Seat Cover Pre-73 Ribbed Top, Interstate Gold Logo','110.00')">
+</FONT></TD>
+<TD WIDTH=340 align=left><A HREF="81_seats.html">Seat Cover Pre-73 Ribbed Top, Interstate Gold Logo</A></TD>
+<TD WIDTH=30>1</TD>
+<TD WIDTH=30>-</TD>
+<TD WIDTH=50 align=right><CENTER>110.00</CENTER></TD></TR>
+<TR><TD WIDTH=140 align=right>
+<form border="2">13-063676<font size=1>
+</FONT></TD>
+<TD WIDTH=340 align=left><A HREF="81_seats.html">Seat 1973, Roadster, Basket Weave, Gold Logo,Strap</A></TD>
+<TD WIDTH=30>0</TD>
+<TD WIDTH=30>NA</TD>
+<TD WIDTH=50 align=right><CENTER>264.20</CENTER></TD></TR>
+<TR><TD WIDTH=140 align=right>
+<form border="2">13-063676/C<font size=1>
+<input type="button" value = "Order" onclick="AddToCart (
+'13-063676/C','Seat Cover, 73 Roadster, Basket Weave, Gold Logo','101.90')">
+</FONT></TD>
+<TD WIDTH=340 align=left><A HREF="81_seats.html">Seat Cover, 73 Roadster, Basket Weave, Gold Logo</A></TD>
+<TD WIDTH=30>2</TD>
+<TD WIDTH=30>-</TD>
+<TD WIDTH=50 align=right><CENTER>101.90</CENTER></TD></TR>
+<TR><TD WIDTH=140 align=right>
+<form border="2">13-063677<font size=1>
+</FONT></TD>
+<TD WIDTH=340 align=left><A HREF="81_seats.html">Seat 1973 Interstate, Basket Weave Gold Logo Strap</A></TD>
+<TD WIDTH=30>0</TD>
+<TD WIDTH=30>NA</TD>
+<TD WIDTH=50 align=right><CENTER>271.12</CENTER></TD></TR>
+<TR><TD WIDTH=140 align=right>
+<form border="2">13-063677/C<font size=1>
+<input type="button" value = "Order" onclick="AddToCart (
+'13-063677/C','Seat Cover 73 Interstate Basket Weave, Gold Logo','110.00')">
+</FONT></TD>
+<TD WIDTH=340 align=left><A HREF="81_seats.html">Seat Cover 73 Interstate Basket Weave, Gold Logo</A></TD>
+<TD WIDTH=30>1</TD>
+<TD WIDTH=30>-</TD>
+<TD WIDTH=50 align=right><CENTER>110.00</CENTER></TD></TR>
+<TR><TD WIDTH=140 align=right>
+<form border="2">13-065234<font size=1>
+<input type="button" value = "Order" onclick="AddToCart (
+'13-065234','Seat 1974, Roadster, Square Top, Gold Logo','280.00')">
+</FONT></TD>
+<TD WIDTH=340 align=left><A HREF="81_seats.html">Seat 1974, Roadster, Square Top, Gold Logo</A></TD>
+<TD WIDTH=30>2</TD>
+<TD WIDTH=30>-</TD>
+<TD WIDTH=50 align=right><CENTER>280.00</CENTER></TD></TR>
+<TR><TD WIDTH=140 align=right>
+<form border="2">13-065234/C<font size=1>
+<input type="button" value = "Order" onclick="AddToCart (
+'13-065234/C','Seat Cover, 74,75, Roadster, Square Top, Gold Logo','91.75')">
+</FONT></TD>
+<TD WIDTH=340 align=left><A HREF="81_seats.html">Seat Cover, 74,75, Roadster, Square Top, Gold Logo</A></TD>
+<TD WIDTH=30>1</TD>
+<TD WIDTH=30>-</TD>
+<TD WIDTH=50 align=right><CENTER>91.75</CENTER></TD></TR>
+<TR><TD WIDTH=140 align=right>
+<form border="2">13-065234/SL<font size=1>
+</FONT></TD>
+<TD WIDTH=340 align=left>Seat 1974, Roadster, Square Top Silver L No Strap</TD>
+<TD WIDTH=30>0</TD>
+<TD WIDTH=30>NA</TD>
+<TD WIDTH=50 align=right><CENTER>0.00</CENTER></TD></TR>
+<TR><TD WIDTH=140 align=right>
+<form border="2">13-065382<font size=1>
+<input type="button" value = "Order" onclick="AddToCart (
+'13-065382','Seat 1974, Interstate, Square Top, Gld Logo, Strap','273.31')">
+</FONT></TD>
+<TD WIDTH=340 align=left><A HREF="81_seats.html">Seat 1974, Interstate, Square Top, Gld Logo, Strap</A></TD>
+<TD WIDTH=30>1</TD>
+<TD WIDTH=30>-</TD>
+<TD WIDTH=50 align=right><CENTER>273.31</CENTER></TD></TR>
+<TR><TD WIDTH=140 align=right>
+<form border="2">13-065382/C<font size=1>
+<input type="button" value = "Order" onclick="AddToCart (
+'13-065382/C','Seat Cover, 74,75 Interstate Square Top, Gold Logo','95.51')">
+</FONT></TD>
+<TD WIDTH=340 align=left><A HREF="81_seats.html">Seat Cover, 74,75 Interstate Square Top, Gold Logo</A></TD>
+<TD WIDTH=30>1</TD>
+<TD WIDTH=30>-</TD>
+<TD WIDTH=50 align=right><CENTER>95.51</CENTER></TD></TR>
+<TR><TD WIDTH=140 align=right>
+<form border="2">13-065612<font size=1>
+<input type="button" value = "Order" onclick="AddToCart (
+'13-065612','Seat, 1975 MK3, Roadster, Square Top, Gold Logo','299.00')">
+</FONT></TD>
+<TD WIDTH=340 align=left><A HREF="81_seats.html">Seat, 1975 MK3, Roadster, Square Top, Gold Logo</A></TD>
+<TD WIDTH=30>1</TD>
+<TD WIDTH=30>-</TD>
+<TD WIDTH=50 align=right><CENTER>299.00</CENTER></TD></TR>
+<TR><TD WIDTH=140 align=right>
+<form border="2">13-065613<font size=1>
+<input type="button" value = "Order" onclick="AddToCart (
+'13-065613','Seat, 1975 MK3, Interstate, Square Top, Gold Logo','266.00')">
+</FONT></TD>
+<TD WIDTH=340 align=left><A HREF="81_seats.html">Seat, 1975 MK3, Interstate, Square Top, Gold Logo</A></TD>
+<TD WIDTH=30>1</TD>
+<TD WIDTH=30>-</TD>
+<TD WIDTH=50 align=right><CENTER>266.00</CENTER></TD></TR>
+<TR><TD WIDTH=140 align=right>
+<form border="2">13-067791<font size=1>
+<input type="button" value = "Order" onclick="AddToCart (
+'13-067791','Rubber Buffer, Seat Base','2.37')">
+</FONT></TD>
+<TD WIDTH=340 align=left>Rubber Buffer, Seat Base</TD>
+<TD WIDTH=30>18</TD>
+<TD WIDTH=30>-</TD>
+<TD WIDTH=50 align=right><CENTER>2.37</CENTER></TD></TR>
+<TR><TD WIDTH=140 align=right>
+<form border="2">13-500001<font size=1>
+</FONT></TD>
+<TD WIDTH=340 align=left><A HREF="13_500001.html">Seat, Single Racing, Roadster, Pre MK3, Gold Logo</A></TD>
+<TD WIDTH=30>0</TD>
+<TD WIDTH=30>NA</TD>
+<TD WIDTH=50 align=right><CENTER>0.00</CENTER></TD></TR>
+<TR><TD WIDTH=140 align=right>
+<form border="2">13-500001/S<font size=1>
+<input type="button" value = "Order" onclick="AddToCart (
+'13-500001/S','Seat Single Racing Roadster, Pre MK3, Silver Logo','295.00')">
+</FONT></TD>
+<TD WIDTH=340 align=left><A HREF="13_500001.html">Seat Single Racing Roadster, Pre MK3, Silver Logo</A></TD>
+<TD WIDTH=30>3</TD>
+<TD WIDTH=30>-</TD>
+<TD WIDTH=50 align=right><CENTER>295.00</CENTER></TD></TR>
+<TR><TD WIDTH=140 align=right>
+<form border="2">13-500002<font size=1>
+</FONT></TD>
+<TD WIDTH=340 align=left><A HREF="13_500002.html">Seat, Dual Racing, Roadster, Pre MK3, Gold Logo</A></TD>
+<TD WIDTH=30>0</TD>
+<TD WIDTH=30>NA</TD>
+<TD WIDTH=50 align=right><CENTER>289.00</CENTER></TD></TR>
+<TR><TD WIDTH=140 align=right>
+<form border="2">13-500003<font size=1>
+</FONT></TD>
+<TD WIDTH=340 align=left><A HREF="13_500002.html">Seat, Dual Racing, Interstate, Pre MK3, Gold Logo</A></TD>
+<TD WIDTH=30>0</TD>
+<TD WIDTH=30>NA</TD>
+<TD WIDTH=50 align=right><CENTER>0.00</CENTER></TD></TR>
+<TR><TD WIDTH=140 align=right>
+<form border="2">13-500003/S<font size=1>
+</FONT></TD>
+<TD WIDTH=340 align=left><A HREF="13_500002.html">Seat, Dual Racing, Interstate, Pre MK3 Silver Logo</A></TD>
+<TD WIDTH=30>0</TD>
+<TD WIDTH=30>NA</TD>
+<TD WIDTH=50 align=right><CENTER>350.00</CENTER></TD></TR>
+<TR><TD WIDTH=140 align=right>
+<form border="2">13-500004<font size=1>
+</FONT></TD>
+<TD WIDTH=340 align=left><A HREF="13_500002.html">Seat, Dual Racing, Roadster, MK3, Gold Logo</A></TD>
+<TD WIDTH=30>0</TD>
+<TD WIDTH=30>NA</TD>
+<TD WIDTH=50 align=right><CENTER>350.00</CENTER></TD></TR>
+<TR><TD WIDTH=140 align=right>
+<form border="2">13-500006<font size=1>
+</FONT></TD>
+<TD WIDTH=340 align=left><A HREF="13_500001.html">Seat, Single Racing, Interstate Pre MK3, Gold Logo</A></TD>
+<TD WIDTH=30>0</TD>
+<TD WIDTH=30>NA</TD>
+<TD WIDTH=50 align=right><CENTER>350.00</CENTER></TD></TR>
+<TR><TD WIDTH=140 align=right>
+<form border="2">13-500006/S<font size=1>
+</FONT></TD>
+<TD WIDTH=340 align=left><A HREF="13_500001.html">Seat Single Racing Interstate Pre MK3 Silver Logo</A></TD>
+<TD WIDTH=30>0</TD>
+<TD WIDTH=30>NA</TD>
+<TD WIDTH=50 align=right><CENTER>350.00</CENTER></TD></TR>
+<TR><TD WIDTH=140 align=right>
+<form border="2">13-500008<font size=1>
+</FONT></TD>
+<TD WIDTH=340 align=left><A HREF="13_500002.html">Seat, Dual Racing, Interstate, MK3, Gold Logo</A></TD>
+<TD WIDTH=30>0</TD>
+<TD WIDTH=30>NA</TD>
+<TD WIDTH=50 align=right><CENTER>350.00</CENTER></TD></TR>
+<TR><TD WIDTH=140 align=right>
+<form border="2">13-500010<font size=1>
+<input type="button" value = "Order" onclick="AddToCart (
+'13-500010','Seat, Single Racing, Roadster, MK3, Gold Logo','350.00')">
+</FONT></TD>
+<TD WIDTH=340 align=left><A HREF="13_500001.html">Seat, Single Racing, Roadster, MK3, Gold Logo</A></TD>
+<TD WIDTH=30>1</TD>
+<TD WIDTH=30>-</TD>
+<TD WIDTH=50 align=right><CENTER>350.00</CENTER></TD></TR>
+<TR><TD WIDTH=140 align=right>
+<form border="2">13-500014<font size=1>
+<input type="button" value = "Order" onclick="AddToCart (
+'13-500014','Seat, Single Racing, Interstate Custom, Gold Logo','350.00')">
+</FONT></TD>
+<TD WIDTH=340 align=left>Seat, Single Racing, Interstate Custom, Gold Logo</TD>
+<TD WIDTH=30>1</TD>
+<TD WIDTH=30>-</TD>
+<TD WIDTH=50 align=right><CENTER>350.00</CENTER></TD></TR>
+<TR><TD WIDTH=140 align=right>
+<form border="2">13-511108<font size=1>
+<input type="button" value = "Order" onclick="AddToCart (
+'13-511108','Seat 1973 Interstate Basket Weave Silver Logo Strap','295.00')">
+</FONT></TD>
+<TD WIDTH=340 align=left><A HREF="13_511154.html">Seat 1973 Interstate Basket Weave Silver Logo Strap</A></TD>
+<TD WIDTH=30>2</TD>
+<TD WIDTH=30>-</TD>
+<TD WIDTH=50 align=right><CENTER>295.00</CENTER></TD></TR>
+<TR><TD WIDTH=140 align=right>
+<form border="2">70-804101<font size=1>
+<input type="button" value = "Order" onclick="AddToCart (
+'70-804101','Seat Foam, Commando Roadster, Standard','144.85')">
+</FONT></TD>
+<TD WIDTH=340 align=left>Seat Foam, Commando Roadster, Standard</TD>
+<TD WIDTH=30>1</TD>
+<TD WIDTH=30>-</TD>
+<TD WIDTH=50 align=right><CENTER>144.85</CENTER></TD></TR>
+<TR><TD WIDTH=140 align=right>
+<form border="2">70-804102<font size=1>
+</FONT></TD>
+<TD WIDTH=340 align=left>Seat Foam, Commando Roadster, Dual Racing</TD>
+<TD WIDTH=30>0</TD>
+<TD WIDTH=30>NA</TD>
+<TD WIDTH=50 align=right><CENTER>82.81</CENTER></TD></TR>
+<TR><TD WIDTH=140 align=right>
+<form border="2">70-804103<font size=1>
+<input type="button" value = "Order" onclick="AddToCart (
+'70-804103','Seat Foam, Commando Roadster, Single Racing','150.00')">
+</FONT></TD>
+<TD WIDTH=340 align=left>Seat Foam, Commando Roadster, Single Racing</TD>
+<TD WIDTH=30>5</TD>
+<TD WIDTH=30>-</TD>
+<TD WIDTH=50 align=right><CENTER>150.00</CENTER></TD></TR>
+<TR><TD WIDTH=140 align=right>
+<form border="2">70-804104<font size=1>
+<input type="button" value = "Order" onclick="AddToCart (
+'70-804104','Seat Foam, Commando Interstate, Standard','110.00')">
+</FONT></TD>
+<TD WIDTH=340 align=left>Seat Foam, Commando Interstate, Standard</TD>
+<TD WIDTH=30>3</TD>
+<TD WIDTH=30>-</TD>
+<TD WIDTH=50 align=right><CENTER>110.00</CENTER></TD></TR>
+<TR><TD WIDTH=140 align=right>
+<form border="2">70-804105<font size=1>
+<input type="button" value = "Order" onclick="AddToCart (
+'70-804105','Seat Foam, Commando Interstate, Dual Racing','169.00')">
+</FONT></TD>
+<TD WIDTH=340 align=left>Seat Foam, Commando Interstate, Dual Racing</TD>
+<TD WIDTH=30>4</TD>
+<TD WIDTH=30>-</TD>
+<TD WIDTH=50 align=right><CENTER>169.00</CENTER></TD></TR>
+<TR><TD WIDTH=140 align=right>
+<form border="2">70-804106<font size=1>
+<input type="button" value = "Order" onclick="AddToCart (
+'70-804106','Seat Foam, Commando Interstate, Single Racing','183.78')">
+</FONT></TD>
+<TD WIDTH=340 align=left>Seat Foam, Commando Interstate, Single Racing</TD>
+<TD WIDTH=30>4</TD>
+<TD WIDTH=30>-</TD>
+<TD WIDTH=50 align=right><CENTER>183.78</CENTER></TD></TR>
+<TR><TD WIDTH=140 align=right>
+<form border="2">70-804201<font size=1>
+<input type="button" value = "Order" onclick="AddToCart (
+'70-804201','Seat Pan, Commando Roadster, Standard','123.00')">
+</FONT></TD>
+<TD WIDTH=340 align=left>Seat Pan, Commando Roadster, Standard</TD>
+<TD WIDTH=30>6</TD>
+<TD WIDTH=30>-</TD>
+<TD WIDTH=50 align=right><CENTER>123.00</CENTER></TD></TR>
+<TR><TD WIDTH=140 align=right>
+<form border="2">70-804202<font size=1>
+<input type="button" value = "Order" onclick="AddToCart (
+'70-804202','Seat Pan, Commando Roadster, MK3','160.00')">
+</FONT></TD>
+<TD WIDTH=340 align=left>Seat Pan, Commando Roadster, MK3</TD>
+<TD WIDTH=30>3</TD>
+<TD WIDTH=30>-</TD>
+<TD WIDTH=50 align=right><CENTER>160.00</CENTER></TD></TR>
+<TR><TD WIDTH=140 align=right>
+<form border="2">70-804203<font size=1>
+<input type="button" value = "Order" onclick="AddToCart (
+'70-804203','Seat Pan, Commando Interstate, Standard','123.00')">
+</FONT></TD>
+<TD WIDTH=340 align=left>Seat Pan, Commando Interstate, Standard</TD>
+<TD WIDTH=30>4</TD>
+<TD WIDTH=30>-</TD>
+<TD WIDTH=50 align=right><CENTER>123.00</CENTER></TD></TR>
+<TR><TD WIDTH=140 align=right>
+<form border="2">70-804204<font size=1>
+</FONT></TD>
+<TD WIDTH=340 align=left>Seat Pan, Commando Interstate, MK3</TD>
+<TD WIDTH=30>0</TD>
+<TD WIDTH=30>NA</TD>
+<TD WIDTH=50 align=right><CENTER>160.00</CENTER></TD></TR>
+<TR><TD WIDTH=140 align=right>
+<form border="2">70-804301<font size=1>
+<input type="button" value = "Order" onclick="AddToCart (
+'70-804301','Seat Trim, Black','25.00')">
+</FONT></TD>
+<TD WIDTH=340 align=left>Seat Trim, Black</TD>
+<TD WIDTH=30>4</TD>
+<TD WIDTH=30>-</TD>
+<TD WIDTH=50 align=right><CENTER>25.00</CENTER></TD></TR>
+<TR><TD WIDTH=140 align=right>
+<form border="2">70-804303<font size=1>
+<input type="button" value = "Order" onclick="AddToCart (
+'70-804303','Clips, Seat Trim, Package of 12','6.75')">
+</FONT></TD>
+<TD WIDTH=340 align=left>Clips, Seat Trim, Package of 12</TD>
+<TD WIDTH=30>4</TD>
+<TD WIDTH=30>-</TD>
+<TD WIDTH=50 align=right><CENTER>6.75</CENTER></TD></TR>
+<TR><TD WIDTH=140 align=right>
+<form border="2">70-804401<font size=1>
+<input type="button" value = "Order" onclick="AddToCart (
+'70-804401','Seat Cover, Roadster, Dual Racing, Gold Logo','86.73')">
+</FONT></TD>
+<TD WIDTH=340 align=left>Seat Cover, Roadster, Dual Racing, Gold Logo</TD>
+<TD WIDTH=30>2</TD>
+<TD WIDTH=30>-</TD>
+<TD WIDTH=50 align=right><CENTER>86.73</CENTER></TD></TR>
+<TR><TD WIDTH=140 align=right>
+<form border="2">70-804402<font size=1>
+<input type="button" value = "Order" onclick="AddToCart (
+'70-804402','Seat Cover, Roadster, Single Racing, Gold Logo','65.00')">
+</FONT></TD>
+<TD WIDTH=340 align=left>Seat Cover, Roadster, Single Racing, Gold Logo</TD>
+<TD WIDTH=30>2</TD>
+<TD WIDTH=30>-</TD>
+<TD WIDTH=50 align=right><CENTER>65.00</CENTER></TD></TR>
+<TR><TD WIDTH=140 align=right>
+<form border="2">70-804406<font size=1>
+<input type="button" value = "Order" onclick="AddToCart (
+'70-804406','Seat Cover, Roadster, Single Racing, Silver Logo','65.00')">
+</FONT></TD>
+<TD WIDTH=340 align=left>Seat Cover, Roadster, Single Racing, Silver Logo</TD>
+<TD WIDTH=30>1</TD>
+<TD WIDTH=30>-</TD>
+<TD WIDTH=50 align=right><CENTER>65.00</CENTER></TD></TR>
+</TABLE>
+<!-- END TABLE INSERT -->
+<P>
+<FONT SIZE=3>
+STATUS Codes: OO - On Order, SO - Special Order, OP - Out of Print, D - Dropped, BO - Back Ordered, NA - Not Available, U-Used. 
+<A HREF="ob_status.html"><B>More Status Information</B></A>
+</FONT>
+<P>
+<HR>
+<CENTER><A HREF="ob_main.html"><B><FONT SIZE=4>Old Britts Home page</FONT></B></A>
+&#133;..<A HREF="ob_p_o.html"><B><FONT SIZE=4>Products, Ordering</FONT></B></A></CENTER>
+<BR>
+<CENTER><A HREF="ob_nor.html"><B><FONT SIZE=4>Norton Parts</FONT></B></A>
+&#133;..<A HREF="ob_1600.htm"><B><FONT SIZE=4>Exhaust</FONT></B></A></CENTER>
+<HR>
+<FONT SIZE=1>This page was written and designed by F. H. Eaton 
+&amp; Associates. If you have any questions or comments, please
+contact us at <A HREF="mailto:info@fheaton.com">info@fheaton.com</A></FONT>
+<BR>
+</P>
+	<!-- start comments
+		Description:    Old Britts body footer include
+		Author:         CC Enterprises
+		Date:           04/24/2012
+		Changes:		
+	// end comments -->
+			
+			</div>
+		</div>
+	</div></BODY></HTML>

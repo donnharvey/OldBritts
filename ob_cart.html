@@ -1,0 +1,650 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml/DTD/xhtml-transitional.dtd">
+<html>
+<head>	
+	<TITLE>Old Britts, Norton Motorcycle Parts, Books & Accessories</TITLE>
+	<META name="Old Britts, Norton Motorcycle Parts, Books & Accessories" content=" Purveyor of genuine Norton factory parts.
+	Providing Paraphernalia and Books for British motorcycles.">
+	<!-- start comments
+	    Description:    Old Britts Shopping Cart page
+	    Author:         Fred Eaton
+	    Date:           08/18/2013
+	// end comments -->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		
+	<script src="js/jquery.js"></script>
+	<script>
+		$(document).ready(function(){
+			if($("#ccselection").val() == "EnterInfo")
+			{
+				$("#ccinfo").show();
+			}
+			else
+			{
+				$("#ccinfo").hide();
+			}
+		});
+		
+		function onChangeccselection()
+		{
+			if($("#ccselection").val() == "EnterInfo")
+			{
+				$("#ccinfo").show();
+			}
+			else
+			{
+				$("#ccinfo").hide();
+			}
+		}
+	</script>
+			<script language="JavaScript">
+			parent.PassedVal = new Array();
+			parent.CartPart = new Array();
+			parent.CartDesc = new Array();
+			parent.CartPrice = new Array();
+			parent.CartQty = new Array();  
+			parent.CartTot = new Array ();
+			parent.BillInfo = new Array ();
+			parent.BillInfo[0] = true;
+			parent.BillInfo[1] = false;
+			for (var i = 2; i <= 19; i++) 
+			{
+				parent.BillInfo[i] = ""
+			}
+			parent.CommInfo = "";
+			parent.CartPart[0] = 'empty'
+		</script>
+		
+	
+	<script language="JavaScript">
+		var PassedPart = '';
+		var PassedDesc = '';
+		var PassedPrice = '';
+		var PassedQty = '';
+		var Price = Number(PassedPrice);
+		
+		function LoadPage()
+		{
+			document.OrderForm.OrderQty.value = Number(PassedQty);
+			BuildOrderForm()
+			PrintInfo()
+			document.OrderForm.comments.value = parent.CommInfo;
+		}
+	
+		function LeaveCart()
+		{
+		  if (parent.CartDesc.length > 0) 
+		  {
+		  	//parent.MenuFrame.location='ob_menu_wc.html'
+		  }
+		  
+		  parent.BillInfo[0] = document.OrderForm.custtype[0].checked;
+		  parent.BillInfo[1] = document.OrderForm.custtype[1].checked;
+		  parent.BillInfo[2] = document.OrderForm.custcode.value;
+		  parent.BillInfo[3] = document.OrderForm.lastname.value;
+		  parent.BillInfo[4] = document.OrderForm.firstname.value;
+		  parent.BillInfo[5] = document.OrderForm.address.value;
+		  parent.BillInfo[6] = document.OrderForm.city.value;
+		  parent.BillInfo[7] = document.OrderForm.state.value;
+		  parent.BillInfo[8] = document.OrderForm.zip.value;
+		  parent.BillInfo[9] = document.OrderForm.email.value;
+		  parent.BillInfo[10] = document.OrderForm.phoneno.value;
+		  
+		  parent.CommInfo = document.OrderForm.comments.value;
+		  
+		  var bill_info = JSON.stringify(BillInfo);
+		  var cart_part = JSON.stringify(CartPart);
+		  var cart_desc = JSON.stringify(CartDesc);
+		  var cart_price = JSON.stringify(CartPrice);
+		  var cart_qty = JSON.stringify(CartQty);
+		  var cart_total = JSON.stringify(CartTot);
+		  var cart_comments = JSON.stringify(CommInfo);
+	
+		  $.ajax({
+			url: "set_session_vars.html", 
+			async: false,
+			datatype: "json",
+			data: {bill_info: bill_info, cart_part: cart_part, cart_desc: cart_desc, cart_price: cart_price, cart_qty: cart_qty, cart_total: cart_total, cart_comments: cart_comments }
+			/*error: function() {alert('an error occurred');},*/
+			/*success: function(data) {alert('success');}*/
+		  });
+		  
+		}
+
+		function AddItem() {
+		  var CartPos = parent.CartDesc.length;
+			/* if (CartPos == 0){
+				parent.CartPart[CartPos] = "SH";
+				parent.CartDesc[CartPos] = "Preliminary Shipping";
+				parent.CartPrice[CartPos] = '25.00';
+				var ShipPrice = Number(parent.CartPrice[CartPos]);
+				parent.CartQty[CartPos] = '1';
+				var Qty = Number(parent.CartQty[CartPos]);
+				var ExPrice = FilterNum(String((ShipPrice * Qty) + .005));
+				ExPrice = Number(ExPrice);
+				parent.CartTot[CartPos] = ExPrice;
+				BuildOrderForm();
+			} */
+		  if (PassedPart != null){
+		    var QtyOrdered = document.OrderForm.OrderQty.value;
+		    if (QtyOrdered <= 0){
+		      alert ('The quantity being ordered is 0 or negative!');}
+		    else {
+		      if (IsNumber (QtyOrdered)){
+		        var CartPos = parent.CartDesc.length;
+		        parent.CartPart[CartPos] = PassedPart;
+		        parent.CartDesc[CartPos] = PassedDesc;
+		        parent.CartPrice[CartPos] = PassedPrice;
+		        parent.CartQty[CartPos] = QtyOrdered;
+		        var ExPrice = FilterNum(String((Price * QtyOrdered) + .005));
+		        ExPrice = Number(ExPrice);
+		        parent.CartTot[CartPos] = ExPrice;
+		        BuildOrderForm ();
+					}
+		      else {alert ('The quantity being ordered is not numeric!');}
+		    } 
+		  }
+		}
+
+		function BuildOrderForm () 
+		{
+		  var CrLf = unescape("%0D%0A");
+		  var HeadVal = "line Part Number                  Description                   Price  Qty    Total";
+		  var DspVal = HeadVal;
+		  var InvTot = 0;
+		  for (var i = 0; i < parent.CartDesc.length; i++){
+		    var LineNo = String(i + 1);
+		    DspVal = DspVal + CrLf + PrtFormat(LineNo, 4, 'R');
+		    DspVal = DspVal + ' ' + PrtFormat(parent.CartPart[i], 20, 'L');
+		    DspVal = DspVal + ' ' + PrtFormat(parent.CartDesc[i], 35, 'L');
+		    var PtPrice = FilterNum(parent.CartPrice[i]);
+		    DspVal = DspVal + ' ' + PrtFormat(PtPrice, 7, 'R');
+		    DspVal = DspVal + ' ' + PrtFormat(parent.CartQty[i], 4, 'R');
+		    InvTot = InvTot + parent.CartTot[i];
+		    DspVal = DspVal + ' ' + PrtFormat(FilterNum(String(parent.CartTot[i])), 8, 'R');
+		  }
+		  DspVal = DspVal + CrLf + CrLf +'       This is the order total not including tax            ';
+      DspVal = DspVal +  PrtFormat(FilterNum(String(InvTot + .005)), 23, 'R');
+		  document.OrderForm.orderarea.value = DspVal;
+			return;
+			//$("#orderarea").val(DspVal);
+		}
+					
+		function ChangeError (){
+		  alert ('You can only change the Shopping Cart using the "Edit Cart" Button!');
+		  BuildOrderForm ();
+		}
+
+		function PrtFormat (PVal, PLen, PJust) 
+		{
+		  if (PVal.length < PLen) {
+		    jx = PLen - PVal.length;
+		    for (var j = 0; j < jx; j++) {
+		      if (PJust == 'L') {PVal = PVal + ' '}
+		      else {PVal = ' ' + PVal}
+		    }
+		  }
+		  else {
+		    if (PVal.length > PLen) {PVal = PVal.substring(0,PLen)}
+		  }
+		  return PVal
+		}
+				
+		function FilterNum (WkNumber) 
+		{
+			WkNumber = String(WkNumber);
+			var EndPos = WkNumber.indexOf(".",0);
+			if (EndPos < 0) {WkNumber = WkNumber + '.00'}
+			else {WkNumber = WkNumber + '00';
+			WkNumber = WkNumber.substring(0,EndPos+1) + WkNumber.substring(EndPos+1,EndPos+3);
+			}
+				return WkNumber 
+		}
+				
+		function IsNumber (CkVal) 
+		{
+		  var NumString = '0123456789';
+		  for (var j = 0; j < CkVal.length; j++) {
+		    RtnVal = false;
+		    for (var i = 0; i < 10; i++) {
+		      if (CkVal.charAt (j) == NumString.charAt (i)) {RtnVal=true}
+		    }
+		    if(RtnVal == false) {return false}
+  			}
+  				return true
+		}
+
+		function MoveBack() 
+		{
+			LeaveCart();
+			history.go (-1);
+		}
+
+		function ResetCart ()
+		{
+		  if (confirm ("Are you sure you want clear your shopping cart?")){
+		  ResetCartX()}
+		}
+		function ResetCartX ()
+		{
+					  parent.CartPart = new Array();
+		  parent.CartDesc = new Array();
+		  parent.CartPrice = new Array();
+		  parent.CartQty = new Array();
+		  parent.CartTot = new Array();
+		  parent.CartPart[0] = 'empty';
+		  BuildOrderForm ();
+		  //parent.MenuFrame.location='ob_menu.html'
+		}
+
+		function ClearInfo ()
+		{
+		  if (confirm ("Are you sure you want clear your billing information?")){
+		  ClearInfoX()}
+		}
+		function ClearInfoX(){
+		  parent.BillInfo = new Array ();
+		  parent.BillInfo[0] = true;
+		  parent.BillInfo[1] = false;
+		  for (var i = 2; i <= 19; i++) {
+		    parent.BillInfo[i] = ""
+		  }
+		  PrintInfo()
+		}
+	
+		function PrintInfo ()
+		{
+		  document.OrderForm.custtype[0].checked = parent.BillInfo[0];
+		  document.OrderForm.custtype[1].checked = parent.BillInfo[1];
+		  document.OrderForm.custcode.value = parent.BillInfo[2];
+		  document.OrderForm.lastname.value = parent.BillInfo[3];
+		  document.OrderForm.firstname.value = parent.BillInfo[4];
+		  document.OrderForm.address.value = parent.BillInfo[5];
+		  document.OrderForm.city.value = parent.BillInfo[6];
+		  document.OrderForm.state.value = parent.BillInfo[7];
+		  document.OrderForm.zip.value = parent.BillInfo[8];
+		  document.OrderForm.email.value = parent.BillInfo[9];
+		  document.OrderForm.phoneno.value = parent.BillInfo[10];
+		  
+		}
+	
+		function ResetForm ()
+		{
+		  if (confirm ("Are you sure you want to reset the entire form?"))
+		  {
+		    ResetCartX();
+		    ClearInfoX();
+		    ClearCommentsX();
+				document.GetElementById('orderarea').value = "";
+		  }
+		}		
+
+		function ClearComments ()
+		{
+		  if (confirm ("Are you sure you want clear your comments/questions?")){
+		  ClearCommentsX()}
+		}
+				
+		function ClearCommentsX ()
+		{
+		  document.OrderForm.comments.value = "";
+		  parent.CommInfo = ""
+		}
+
+		function ChangeError (){
+		  alert ('You can only change the Shopping Cart using the "Edit Cart" Button!');
+		  BuildOrderForm ()
+		}
+	
+		function EditCart ()
+		{
+		  var LnNo = document.OrderForm.EditLineNo.value;
+		  if (LnNo == "") {
+				alert ('You must enter the line number you want to change/delete!');
+			}
+			else if (LnNo == "1"){
+				alert("You can not edit the shipping charge!");
+			}
+			else {
+		    if (IsNumber (LnNo)){
+		      if (LnNo <= 0 || LnNo > parent.CartDesc.length) {
+		        alert ('You entered ' + LnNo + ' which is not a line number in your cart!');}
+		      else {
+		        LnNo = LnNo - 1;
+		        Price = Number(parent.CartPrice[LnNo]);
+		        PassedPart = parent.CartPart[LnNo];
+		        PassedDesc = parent.CartDesc[LnNo];
+		        PassedPrice = FilterNum(String(parent.CartPrice[LnNo]));
+		        var TextVal = null;
+		        TextVal = PassedPart + " " + PassedDesc + " $" + PassedPrice;
+		        document.OrderForm.ItemToAdd.value = TextVal;
+		        document.OrderForm.OrderQty.value = Number(parent.CartQty[LnNo]);
+		        if (parent.CartDesc.length == 1) {ResetCart()}
+		        else {
+		          var TempPart = new Array();  TempPart = parent.CartPart;   parent.CartPart = new Array();
+		          var TempDesc = new Array();  TempDesc = parent.CartDesc;   parent.CartDesc = new Array();
+		          var TempPrice = new Array(); TempPrice = parent.CartPrice; parent.CartPrice = new Array();
+		          var TempQty = new Array();   TempQty = parent.CartQty;     parent.CartQty = new Array();
+		          var TempTot = new Array();   TempTot = parent.CartTot;     parent.CartTot = new Array();
+		          ix = -1;
+		          for (var i = 0; i < TempDesc.length; i++) {
+		            if (i != LnNo) {
+		              ix = ix + 1;
+		              parent.CartPart[ix] = TempPart[i];
+		              parent.CartDesc[ix] = TempDesc[i];
+		              parent.CartPrice[ix] = TempPrice[i];
+		              parent.CartQty[ix] = TempQty[i];
+		              parent.CartTot[ix] = TempTot[i]}
+		          }
+		          BuildOrderForm ()}
+		      }
+		    }   
+		    else {alert ('The line number entered is not numeric!')}
+		  }
+		}
+
+		function OpenHelpWindow (URL) 
+		{
+			window.open(URL, "newWin", "scrollbars=1,resizable=1,height=300,width=500")
+		}
+		function SendForm ()
+		{
+		  var CrLf = unescape("%0D");
+		  var ReqFields = "";
+		  if (document.OrderForm.custtype[0].checked == true) {
+		    if (document.OrderForm.lastname.value == "") {ReqFields = ReqFields + 'Last Name' + CrLf}
+		    if (document.OrderForm.firstname.value == "") {ReqFields = ReqFields + 'First Name' + CrLf}
+		    if (document.OrderForm.address.value == "") {ReqFields = ReqFields + 'Address' + CrLf}
+		    if (document.OrderForm.city.value == "") {ReqFields = ReqFields + 'City' + CrLf}
+		    if (document.OrderForm.state.value == "") {ReqFields = ReqFields + 'State' + CrLf}
+		    if (document.OrderForm.zip.value == "") {ReqFields = ReqFields + 'Zip' + CrLf}
+		    if (document.OrderForm.email.value == "") {ReqFields = ReqFields + 'E-Mail' + CrLf}
+		    if (document.OrderForm.phoneno.value == "") {ReqFields = ReqFields + 'Phone' + CrLf}
+		  }
+		  else {
+		    if (document.OrderForm.custtype[1].checked == true) {
+		      if (document.OrderForm.lastname.value == "") {ReqFields = ReqFields + 'Last Name' + CrLf}
+		      if (document.OrderForm.firstname.value == "") {ReqFields = ReqFields + 'First Name' + CrLf}
+		      if (document.OrderForm.email.value == "") {ReqFields = ReqFields + 'E-Mail' + CrLf}
+		      
+		    }
+		  }
+		  if (ReqFields == "") {SendIt()}
+		  else {alert ("The following field(s) are required:" + CrLf + ReqFields)
+		  }
+		}
+		
+		function SendIt ()
+		{
+
+	
+			document.OrderForm.submit();
+			ResetCartX();
+			ClearInfoX();
+			ClearCommentsX();
+			
+			$.ajax({
+				url: "clear_session_vars.html"
+			});
+			
+		}
+
+	</script>
+	
+	
+	<script src="js/yui-min.js"></script>
+	<script src="js/json2.js"></script>
+	
+	<link rel="stylesheet" type="text/css" href="js/cssgrids-min.css">
+	<link rel="stylesheet" type="text/css" href="js/menu.css">
+	<SCRIPT language="JavaScript">
+		if (typeof CartPart == "undefined") 
+		{
+			PassedVal = new Array();
+			/*CartPart = new Array();
+			CartDesc = new Array();
+			CartPrice = new Array();
+			CartQty = new Array();  
+			CartTot = new Array ();
+			BillInfo = new Array ();
+			BillInfo[0] = true;
+			BillInfo[1] = false;
+			for (var i = 2; i <= 19; i++) 
+			{
+				BillInfo[i] = ""
+			}
+			CommInfo = "";
+			CartPart[0] = 'empty'*/
+		}
+	</SCRIPT></head>
+<body BGCOLOR="#ffffff" TEXT="#000080" LINK="#ff0000" VLINK="#008000" onLoad="LoadPage()" onBeforeUnload="LeaveCart();">
+		
+	<div class="yui3-g">
+		<div class="yui3-u-1-8" >
+			<div id="menu" style="text-align:center; margin:0 auto; position:fixed; width:10%;letter-spacing:normal;word-spacing:normal;">
+	<br/><br/>
+	<div id="menu_image">
+		<a HREF="ob_main.html" style="text-decoration:none;" ><IMG SRC="image/home.gif" ALT="Old Britts Home"></a>
+		<br>
+		<a HREF="ob_cart.html" ><IMG SRC="image/e_cart.gif" ALT=" Shopping Cart"></a>		<br>
+		<a HREF="ob_nor.html" ><IMG SRC="image/norts.gif" ALT="Norton Parts Menu"></a> 
+		<FONT SIZE=2><b>
+	</div>	
+	<p>
+	or by<br>year
+	</p>
+	<A HREF="nor_mk3_75.html" >1975</A><br>
+	<A HREF="nor_comm_73.html" >1973-74</A><br>
+	<A HREF="nor_comm_72.html" >1972</A><br>
+	<A HREF="nor_comm_71.html" >1971</A><br>
+	<A HREF="nor_comm_69.html" >1969-70</A><br>
+	<A HREF="nor_atlas_66.html">1966-68</A><br>
+	<A HREF="ob_group.html" >General</A>
+	</p>
+	<A HREF="ob_p_o.html" >Our products</A>
+	</b></font>
+	
+</div>		</div>
+		<div class="yui3-u-7-8">
+			<div id="content" style="border-left:2px solid blue; padding-left:8px;overflow:auto;letter-spacing:normal;word-spacing:normal; ">				<CENTER><font size="+2" color="ff0000">
+		<IMG SRC="image/oldbs.gif" ALT="Old Britts"> Shopping Cart</font></b></center>
+		<hr>
+	<font size="5" color="ff0000"><b><center>Please Note: We no longer ship orders outside the US</center><p>
+                    </b></font>
+
+<!-- Un-comment the following lines if a note is required
+<TABLE BORDER=1 align="center"><TR><TD WIDTH=680>
+<b>
+<p>
+<center>
+<font size="5">
+We are closed until Jan 31
+to conduct a physical inventory<br>
+in preparation for retiring sometime this year.
+<P>
+Fred and Ella  
+<p>
+</CENTER></font>
+</b>
+</table>
+
+// end comments -->
+
+
+
+		<form method=POST action="https://oldbritts.com/EmailOrderConv.html" name="OrderForm" border="1">
+
+		  <!***  Item selected section  ***>
+
+		    <IMG SRC="image/help.gif" ALT="Help" align=right BORDER="0" ismap usemap="#Help1Map">
+		    <MAP name="Help1Map">
+		    <AREA shape=rect coords="0,0,245,230" href="javascript:void (0)" onclick="OpenHelpWindow('ob_sc_s1_help.html')">
+
+		    <IMG SRC="image/returns.jpg" ALT="Return" align=right BORDER="0" ismap usemap="#PoliciesMap">
+		    <MAP name="PoliciesMap">
+		    <AREA shape=rect coords="0,0,245,230" href="javascript:void (0)" onclick="OpenHelpWindow('ob_policies.html')">
+		    </MAP>
+
+		    <font size="4" color="ff0000"><b><center>Item You Selected Section</center></b></font>
+		    <b>This is the item that you have selected to purchase:</b>
+		    <input type="text" name="ItemToAdd" size=83 value="No Product has been Selected"><br>
+		    <b>Enter the quantity of this item you want to purchase</b>
+		    <input type="text" name="OrderQty" size=4 maxlength=4 value=1>
+		    <b>and click</b>
+		    <input type="button" name="AddButton" value="Place in Cart" onClick="AddItem();">
+		    <center>
+		    <input  type="button" value="Return to Last Window" onClick="MoveBack()">
+		    </center>
+		    <hr>
+		 <!*** Shopping cart section ***>
+		    <IMG SRC="image/help.gif" ALT="Help" align=right BORDER="0" ismap usemap="#Help2Map">
+		    <MAP name="Help2Map">
+		    <AREA shape=rect coords="0,0,45,30" href="javascript:void (0)" onclick="OpenHelpWindow('ob_sc_s2_help.html')">
+		    </MAP>
+		    <font size="4" color="ff0000"><b><center>Your Shopping Cart Section</center></b></font><p>
+		    <p>
+       		    
+		    <b>The following items have been placed in your cart to purchase:</b>
+		    <textarea id="orderarea" name="orderarea" cols="83" rows="10" onchange="ChangeError()">Products must be selected from the Order Pages before they can be added to the Shopping Cart.</textarea>
+		    <center>
+		    <input  type="button" value="Return to Last Window" onclick="MoveBack ()">
+		    </center>
+		    <hr>
+		 <!*** Edit cart section ***>
+		    <IMG SRC="image/help.gif" ALT="Help" align=right BORDER="0" ismap usemap="#Help3Map">
+		    <MAP name="Help3Map">
+		    <AREA shape=rect coords="0,0,45,30" href="javascript:void (0)" onclick="OpenHelpWindow('ob_sc_s3_help.html')">
+		    </MAP>
+		    <font size="4" color="ff0000"><b><center>Cart Maintenance Section</center></b></font>
+		    <b>To remove all items from your cart, click</b>
+		    <input  type="button" value="Clear Cart" onclick="ResetCart()">
+		    <br>
+		    <b>To change or delete a line item, enter the line number</b>
+		    <input type="text" name="EditLineNo" size=4 maxlength=4 value="">
+		    <b>and click</b>
+		    <input  type="button" value="Edit Cart" onclick="EditCart()">
+		    <hr>
+		 <!*** Billing Information section ***>
+		    <IMG SRC="image/help.gif" ALT="Help" align=right BORDER="0" ismap usemap="#Help4Map">
+		    <MAP name="Help4Map">
+		    <AREA shape=rect coords="0,0,45,30" href="javascript:void (0)" onclick="OpenHelpWindow('ob_sc_s4_help.html')">
+		    </MAP>
+
+		    <IMG SRC="image/security.jpg" ALT="Security" align=right BORDER="0" ismap usemap="#PoliciesMap">
+		    <MAP name="PoliciesMap">
+		    <AREA shape=rect coords="0,0,245,230" href="javascript:void (0)" onclick="OpenHelpWindow('ob_policies.html')">
+		    </MAP>
+
+		    <font size="4" color="ff0000"><b><center>Billing Information Section</center><p>
+                    </b></font>
+		    <p>
+		    <input type=radio name="custtype" value="new"><b> New Customer</b> or
+		    <input type=radio name="custtype" value="old"><b> Existing Customer:
+		     - Old Britts Customer Code</b><input type="text" name="custcode" size=5>
+		    <br>
+		    <b>Last Name:</b><input type="text" name="lastname" size=25>
+		    <b>First Name:</b><input type="text" name="firstname" size=25>
+		    <br>
+		    <b>Address:</b><textarea name="address" cols="50" rows="2"></textarea>
+		    <br>
+		    <b>City:</b><input type="text" name="city" size=25>
+		    <b>State:</b><input type="text" name="state" size=2>
+		    <b>Zip:</b><input type="text" name="zip" size=10>
+		    <br>
+		    <b>E-Mail Address</b><input type="text" name="email" size=35>
+		    <br>
+		    <b>Phone:</b><input type="text" name="phoneno" size=20>
+		    <br>
+		    <br clear="all">
+		    <IMG SRC="image/ccard.jpg" ALT="CCards" align=right>
+		    <br>
+				<b>Credit Card Information:</b>
+				<select id="ccselection" name="ccselection" onChange="onChangeccselection()">
+
+                                        <option value="UseInfoOnFile">Use my CC information on file</option>
+					<option value="EnterInfo">I will enter my CC information</option>
+		<!-- Un-comment the following lines if a note is required
+		<option value="CallWithInfo">I will call with my CC information</option>
+		// end comments -->
+					
+				</select>
+				<div id="ccinfo">
+					<b>Visa or MasterCard Number</b>
+					<input type="text" name="ccfirst" size=4><b> - </b>
+					<input type="text" name="ccsecond" size=4><b> - </b>
+					<input type="text" name="ccthird" size=4><b> - </b>
+					<input type="text" name="ccfourth" size=4><br>
+					<b> - or - <br>
+					American Express Number</b>
+					<input type="text" name="aefirst" size=4><b> - </b>
+					<input type="text" name="aesecond" size=6><b> - </b>
+					<input type="text" name="aethird" size=5>
+					<br>
+					<b> Expiration Date MMYY (no spaces)</b><input type="text" name="expdate" size=4>
+					<b> Card Security Code</b><input type="text" name="csc" size=4>
+				</div>
+		    <br><br>
+		    
+		    <b>To clear all of the above billing information, click</b>
+		    <input  type="button" value="Clear Info." onclick="ClearInfo()">
+		    <br clear="all">
+		    <hr>
+		 <!*** Comments/Question section ***>
+		    <IMG SRC="image/help.gif" ALT="Help" align=right BORDER="0" ismap usemap="#Help5Map">
+		    <MAP name="Help5Map">
+		    <AREA shape=rect coords="0,0,45,30" href="javascript:void (0)" onclick="OpenHelpWindow('ob_sc_s5_help.html')">
+		    </MAP>
+		    <font size="4" color="ff0000"><b><center>Comments/Question Section</center></b></font>
+		    <textarea cols="83" rows="10" name="comments"></textarea>
+		    <br>
+		    <b>To clear all Comments/Questions, click</b>
+		    <input  type="button" value="Clear Info." onclick="ClearComments()">
+		    <hr>    
+		 <!*** Submit/reset section ***>
+		    <IMG SRC="image/help.gif" ALT="Help" align=right BORDER="0" ismap usemap="#Help6Map">
+		    <MAP name="Help6Map">
+		    <AREA shape=rect coords="0,0,45,30" href="javascript:void (0)" onclick="OpenHelpWindow('ob_sc_s6_help.html')">
+		    </MAP>
+
+		    <IMG SRC="image/shipping.jpg" ALT="Shipping" align=right BORDER="0" ismap usemap="#PoliciesMap">
+		    <MAP name="PoliciesMap">
+		    <AREA shape=rect coords="0,0,245,230" href="javascript:void (0)" onclick="OpenHelpWindow('ob_policies.html')">
+		    </MAP>
+
+		    <font size="4" color="ff0000"><b><center>Submit/Reset Section</center></b></font>
+		    <br>
+		    <center><b><font size="4">Select the type of shipping service you desire:</font></b><br>
+		    <input type=radio name="shiptype" value="Best" checked><b> Best Shipping,</b>
+		    <input type=radio name="shiptype" value="Priority"><b> Priority Mail,</b>
+		    <input type=radio name="shiptype" value="UPS Ground"><b> UPS Ground,</b>
+		    <input type=radio name="shiptype" value="Three_Day"><b> UPS 3-day Air or</b>
+		    <input type=radio name="shiptype" value="Two_Day"><b> UPS 2-day Air or</b>
+		    <input type=radio name="shiptype" value="Next-Day"><b> UPS Next Day Air</b></center><br>
+		    <b>
+		    For more detail on shipping, click on the <b>Shipping</b> help for this section.
+			</b>
+		    <br>
+		    <b>To send the above order and information to Old Britts, click</b>
+		    <input type="button"  value="Send Order/Information" onclick="SendForm()">
+		    <br>
+		    <b>To clear all fields and clear the shopping cart, click</b>
+		    <input  type="button" name="resetButton" value="Reset Entire Form" onclick="ResetForm()">
+		    <input type="hidden" name="success" value="http://oldbritts.com/ob_main.html">
+			<!--<input type="button" value="Test LeaveCart" onclick="LeaveCart()">-->
+		</form>
+		<br/>
+		<HR>
+		<br/>
+		<FONT SIZE=1><P>This page was written and designed by F. H. Eaton
+		&amp; Associates. </P></FONT>
+		</CENTER>
+		<!-- start comments
+		Description:    Old Britts body footer include
+		Author:         CC Enterprises
+		Date:           04/24/2012
+		Changes:		
+	// end comments -->
+			
+			</div>
+		</div>
+	</div></body>
+</html>
